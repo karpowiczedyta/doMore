@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="729c7b75-c5aa-4f7e-aa37-19bcda6914b0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/doMore-app/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doMore-app/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/doMore-app/src/styles.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/doMore-app" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Admin\Desktop\DO OPROGRAMOWANIA\opr do Javy\IntelliJ IDEA Community Edition 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1qL6RvfYoK5RUJikei5dBAU8we9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/doMore-api" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="729c7b75-c5aa-4f7e-aa37-19bcda6914b0" name="Default Changelist" comment="" />
+      <created>1616846518593</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616846518593</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="647" y="182" key="FileChooserDialogImpl" timestamp="1616846644592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="647" y="182" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616846644592" />
+  </component>
+</project>
