@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="main">
+
+    <div class="header">
+      <span class="editEStage">Edit your education stage</span>
+      <button class="close" (click)="onClose()"><i class="fas fa-times"></i></button>
+    </div>
+
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && update()" novalidate class="form">
+      <div class="choice clearfix">
+        <div class="input-group">
+          <h4>Choose your education stage: </h4>
+          <i class="fas fa-user-graduate"></i>
+          <select [(ngModel)]="selectedEducationStage" (click)=getEducationStage() name="eStage" #estage="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && estage.invalid}" required>
+            <option *ngFor="let educationStageDistinct of alleducationStagesDistinct"
+              [ngValue]="educationStageDistinct">{{ educationStageDistinct }}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <h4>Choose your name of class: </h4>
+          <i class="fas fa-book-reader"></i>
+          <select [(ngModel)]="selectedName" (click)=getName() name="className" #className="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && className.invalid}" required>
+            <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <h4>Choose your year: </h4>
+          <i class="fas fa-calendar-alt"></i>
+          <select [(ngModel)]="selectedYear" (click)=getYear() name="yearOfStudy" #yearOfStudy="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && yearOfStudy.invalid}" required>
+            <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <h4>Choose your subject: </h4>
+          <i class="fas fa-calendar-alt"></i>
+          <select [(ngModel)]="selectedSubject" name="subjectt" #subjectt="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && subjectt.invalid }" required>
+            <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject}}</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="update">Update</button>
+    </form>
+  </div>
+</div>

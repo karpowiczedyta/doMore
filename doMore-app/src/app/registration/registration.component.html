@@ -1,0 +1,69 @@
+<div class="containerr">
+   <div class="wrapper">
+    <div class="container">
+      <h1>Welcome </h1>
+      <form class="form" #loginform="ngForm" (ngSubmit)=" loginform.form.valid && registerUser()  " novalidate >
+        <input type="text"
+        name="firstName"
+        placeholder="First name"
+        [(ngModel)]="firstNamee"
+        #firstName="ngModel"
+        [ngClass]="{ 'is-invalid': loginform.submitted && firstName.invalid && firstName.touched}"
+        id="form2Example1" class="form-control"
+        required /> <div class = "one">1</div>
+        <div *ngIf="loginform.submitted && firstName.invalid" class="invalid-input">
+          <h2 *ngIf="firstName.errors?.required">First name is required</h2>
+        </div>
+        <input type="text"
+        name="lastName"
+        placeholder="Last name"
+        [(ngModel)]="lastNamee"
+        #lastName="ngModel"
+        [ngClass]="{ 'is-invalid': loginform.submitted && lastName.invalid && lastName.touched}"
+        id="form2Example1" class="form-control"
+        required /> <div class = "two">2</div>
+        <div *ngIf="loginform.submitted && lastName.invalid" class="invalid-input">
+          <h2 *ngIf="lastName.errors?.required">Last name is required</h2>
+        </div>
+        <input type="email"
+        name="email"
+        placeholder="Username"
+        [(ngModel)]="emaill"
+        #email="ngModel"
+        [ngClass]="{ 'is-invalid': loginform.submitted && email.invalid && email.touched}"
+        id="form2Example1" class="form-control"
+        required /> <div class = "three">3</div>
+        <div *ngIf="loginform.submitted && email.invalid" class="invalid-input">
+          <h2 *ngIf="email.errors?.required">Email is required</h2>
+        </div>
+        <small class="invalid-input">{{msg}}</small>
+        <input type="password"
+        name="password"
+        placeholder="Password"
+        [(ngModel)]="passwordd"
+        #password="ngModel"
+        [ngClass]="{ 'is-invalid': loginform.submitted && password.invalid }"
+        id="form2Example2" class="form-control"
+        required /> <div class = "fourth">4</div>
+        <div *ngIf="loginform.submitted && password.invalid" class="invalid-input">
+          <h2 *ngIf="password.errors?.required">Password is required</h2>
+        </div>
+        <button type="submit" id="login-button">Register</button> <div class = "five">5</div>
+        <p class="reg-p">You are a member? <a class="reg" href="/login" >Log in</a></p> <div class = "six">6</div>
+      </form>
+    </div>
+    <ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  </div>
+

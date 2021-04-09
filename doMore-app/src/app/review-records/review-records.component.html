@@ -1,0 +1,398 @@
+
+<header class= "main-nav">
+  <div class="main-nav-name">
+    <h3> do-more </h3>
+  </div>
+</header>
+<nav>
+  <div class="main-nav-sidebar">
+    <a href="/addEducationStage"><i class="fas fa-user-plus"></i><span>Add new education stage</span></a><h4></h4>
+    <a href="/addSubjects"><i class="fas fa-user-plus"></i><span>Add new subject</span></a> <h4></h4>
+    <a href="/startLearning"><i class="fas fa-hourglass "></i><span>Start learning for today</span></a><h4></h4>
+    <a href="/reviewRecords"><i class="fas fa-tasks"></i><span>An overwiev of your progress </span></a><h4></h4>
+    <a href="/charts"><i class="far fa-chart-bar"></i><span>Charts</span></a><h4></h4>
+    <a href="/pieChart"><i class="fas fa-chart-pie"></i><span>Pie chart</span></a><h4></h4>
+    <a routerLink="/notes"><i class="fas fa-sticky-note"></i><span>Make notes</span></a><h4></h4>
+    <a href="/editions"><i class="fas fa-edit"></i><span>Editions </span></a><h4></h4>
+    <h4 class="h4-main-nav">
+      <span>Account</span>
+    </h4>
+    <div class="main-nav-account">
+      <a href="/settings"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+      <a (click) = "logout()" ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <nav class="header">
+    <div class="progress">
+      <i class="fas fa-spinner"></i>
+      <span class="text"> Your Progress </span>
+    </div>
+    <div class="navbar-links">
+      <ul class="navbar-ul">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/reviewRecords"> Overview </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/counterUpTimerTable"> Counter-up timer </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/breakTable"> Break </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && chooseSuitableData()" novalidate>
+      <div class="choice clearfix">
+        <div class="input-group">
+          <h4>Choose your education stage: </h4>
+          <i class="fas fa-user-graduate"></i>
+          <select [(ngModel)]="selectedEducationStage" (click)=" getEducationStage()" name="eStage" #estage="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && estage.invalid}" required>
+            <option *ngFor="let educationStageDistinct of alleducationStagesDistinct"
+              [ngValue]="educationStageDistinct">{{ educationStageDistinct }}</option>
+          </select>
+          <div *ngIf="f.submitted && estage.invalid " class="invalid-input">
+            <h2 *ngIf="estage.errors?.required">Education Stage is required</h2>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <h4>Choose your name of class: </h4>
+          <i class="fas fa-book-reader"></i>
+          <select [(ngModel)]="selectedName" (click)=" getName() " name="className" #className="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && className.invalid}" required>
+            <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+          </select>
+          <div *ngIf="f.submitted && className.invalid " class="invalid-input">
+            <h2 *ngIf="className.errors?.required">Class name is required</h2>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <h4>Choose your year: </h4>
+          <i class="fas fa-calendar-alt"></i>
+          <select [(ngModel)]="selectedYear" (click)=" getYear() " name="yearOfStudy" #yearOfStudy="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && yearOfStudy.invalid}" required>
+            <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+          </select>
+          <div *ngIf="f.submitted && yearOfStudy.invalid " class="invalid-input">
+            <h2 *ngIf="yearOfStudy.errors?.required">Year is required</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkboxs">
+        <h4>Check the options and enter data to display the records:</h4>
+
+        <div class="input-group-ch">
+          <input type="checkbox" class="in-checkbox" disabled checked>
+          <span>Date</span>
+          <input [disabled]="!isSelectedDate" class="input-dataC" type="date" name="datee" [(ngModel)]="date"
+            #datee="ngModel" [ngClass]="{'is-invalid': f.submitted && datee.invalid}" required>
+
+          <div *ngIf="f.submitted && datee.invalid" class="invalid-input">
+            <h3 *ngIf="datee.errors?.required" class="communicat!">Date is required</h3>
+          </div>
+        </div>
+
+        <div class="input-group-ch">
+          <input type="checkbox" class="in-checkbox" name="isSelectedSubject" (click)="onchangeSubject()"
+            [(ngModel)]="isSelectedSubject">
+          <span>Subject </span>
+          <select [disabled]="!isSelectedSubject" [(ngModel)]="selectedSubject" class="input-data" name="subjectt"
+            #subjectt="ngModel" [ngClass]="{'is-invalid': f.submitted && subjectt.invalid && isSelectedSubject===true}"
+            required>
+            <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject}}</option>
+          </select>
+          <div *ngIf="f.submitted && subjectt.invalid && isSelectedSubject===true" class="invalid-input">
+            <h3 *ngIf="subjectt.errors?.required">Subject is required</h3>
+          </div>
+
+        </div>
+
+        <div class="input-group-ch">
+          <input type="checkbox" class="in-checkbox" name="isSelectedStartTime" (click)="onchange()"
+            [(ngModel)]="isSelectedStartTime">
+          <span>Start time</span>
+          <input [disabled]="!isSelectedStartTime" class="input-dataST" type="time" name="startTimee"
+            [(ngModel)]="startTime" #startTimee="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && startTimee.invalid && isSelectedStartTime === true}" required>
+          <div *ngIf="f.submitted && startTimee.invalid && isSelectedStartTime===true" class="invalid-input">
+            <h3 *ngIf="startTimee.errors?.required">Start time is required</h3>
+          </div>
+        </div>
+        <div class="input-group-ch">
+          <input type="checkbox" class="in-checkbox" name="isSelectedEndTime" (click)="onchange()"
+            [(ngModel)]="isSelectedEndTime">
+          <span>End time</span>
+          <input [disabled]="!isSelectedEndTime" class="input-dataET" type="time" name="endTimee" [(ngModel)]="endTime"
+            #endTimee="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && endTimee.invalid && isSelectedEndTime === true}" required>
+          <div *ngIf="f.submitted && endTimee.invalid && isSelectedEndTime===true" class="invalid-input">
+            <h3 *ngIf="endTimee.errors?.required">End time is required</h3>
+          </div>
+        </div>
+
+        <div class="input-group-ch">
+          <input type="checkbox" class="in-checkbox" name="isSelectedSummary" (click)="onchangeSummary()"
+            [(ngModel)]="isSelectedSummary">
+          <span>Count the hours summary</span>
+        </div>
+      </div>
+
+      <button type="submit" class="search">Search</button>
+    </form>
+
+    <div class="grid-table">
+      <div class="thead">
+        <div class="tr">
+          <div class="td">Education Stage</div>
+          <div class="td">Name of class</div>
+          <div class="td">Year</div>
+          <div class="td">Subject</div>
+          <div class="td">Date</div>
+          <div class="td">Start time</div>
+          <div class="td">End time</div>
+          <div class="td">Time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-tablee">
+      <div class="thead ">
+        <a class="tr" *ngFor="let counterUpTimer of reviewRecordList ; let i = index">
+          <div class="td0">
+            <div class="eStageRow">{{counterUpTimer.educationStage}}</div>
+          </div>
+
+          <div class="td0">
+            <div class="className">{{counterUpTimer.name}}</div>
+          </div>
+
+          <div class="td0">
+            <div class="year"> {{counterUpTimer.actualYear}}</div>
+          </div>
+
+          <div class="td0">
+            <div class="subject"> {{counterUpTimer.subject}}</div>
+          </div>
+
+          <div class="td0">
+            <div class="date">{{counterUpTimer.date | date:'dd-MM-yyyy' }}</div>
+          </div>
+
+          <div class="td0">
+            <div class="startTime"> {{counterUpTimer.startTime | date: 'hh:mm' }}</div>
+
+          </div>
+
+          <div class="td0">
+            <div class="endTime"> {{counterUpTimer.endTime | date: 'hh:mm'}}</div>
+          </div>
+
+          <div class="td0">
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours < 10">
+
+              0{{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours < 10">
+
+              0{{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours < 10">
+
+              0{{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours < 10">
+
+              0{{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours >= 10">
+
+              {{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours >= 10">
+
+              {{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+            </div>
+
+            <div class="time"
+              *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours >= 10">
+
+              {{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+            </div>
+          </div>
+
+        </a>
+
+      </div>
+    </div>
+
+
+    <div class="summary-all">
+      <div class="daySummary">
+
+        <div class="summary" *ngIf="timeSummary !== undefined">
+          <span class="textS">Your time summary for {{dateS}}: </span>
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds < 10 && timeSummary!.minutes < 10 &&  timeSummary!.hours < 10">
+
+            0{{timeSummary!.hours}}:0{{timeSummary!.minutes}}:0{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds >= 10 && timeSummary!.minutes < 10 &&  timeSummary!.hours < 10">
+
+            0{{timeSummary!.hours}}:0{{timeSummary!.minutes}}:{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds < 10 && timeSummary!.minutes >= 10 &&  timeSummary!.hours < 10">
+
+            0{{timeSummary!.hours}}:{{timeSummary!.minutes}}:0{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds >= 10 && timeSummary!.minutes >= 10 &&  timeSummary!.hours < 10">
+
+            0{{timeSummary!.hours}}:{{timeSummary!.minutes}}:{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds < 10 && timeSummary!.minutes < 10 &&  timeSummary!.hours >= 10">
+
+            {{timeSummary!.hours}}:0{{timeSummary!.minutes}}:0{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds < 10 && timeSummary!.minutes >= 10 &&  timeSummary!.hours >= 10">
+
+            {{timeSummary!.hours}}:{{timeSummary!.minutes}}:0{{timeSummary!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummary!.seconds >= 10 && timeSummary!.minutes >= 10 &&  timeSummary!.hours >= 10">
+
+            {{timeSummary!.hours}}:{{timeSummary!.minutes}}:{{timeSummary!.seconds}}
+          </span>
+        </div>
+      </div>
+
+      <div class="dayAndSubjectSummary">
+
+        <div class="summary" *ngIf="timeSummarySubject !== undefined">
+          <span class="textS">Your time summary for {{finalSubject}}: </span>
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds < 10 && timeSummarySubject!.minutes < 10 &&  timeSummarySubject!.hours < 10">
+
+            0{{timeSummarySubject!.hours}}:0{{timeSummarySubject!.minutes}}:0{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds >= 10 && timeSummarySubject!.minutes < 10 &&  timeSummarySubject!.hours < 10">
+
+            0{{timeSummarySubject!.hours}}:0{{timeSummarySubject!.minutes}}:{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds < 10 && timeSummarySubject!.minutes >= 10 &&  timeSummarySubject!.hours < 10">
+
+            0{{timeSummarySubject!.hours}}:{{timeSummarySubject!.minutes}}:0{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds >= 10 && timeSummarySubject!.minutes >= 10 &&  timeSummarySubject!.hours < 10">
+
+            0{{timeSummarySubject!.hours}}:{{timeSummarySubject!.minutes}}:{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds < 10 && timeSummarySubject!.minutes < 10 &&  timeSummarySubject!.hours >= 10">
+
+            {{timeSummarySubject!.hours}}:0{{timeSummarySubject!.minutes}}:0{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds < 10 && timeSummarySubject!.minutes >= 10 &&  timeSummarySubject!.hours >= 10">
+
+            {{timeSummarySubject!.hours}}:{{timeSummarySubject!.minutes}}:0{{timeSummarySubject!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummarySubject!.seconds >= 10 && timeSummarySubject!.minutes >= 10 &&  timeSummarySubject!.hours >= 10">
+
+            {{timeSummarySubject!.hours}}:{{timeSummarySubject!.minutes}}:{{timeSummarySubject!.seconds}}
+          </span>
+        </div>
+      </div>
+
+      <div class="dayAndBreakSummary">
+
+        <div class="summary" *ngIf="timeSummaryBreak !== undefined">
+          <span class="textS">Your break summary for {{dateS}} : </span>
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds < 10 && timeSummaryBreak!.minutes < 10 &&  timeSummaryBreak!.hours < 10">
+
+            0{{timeSummaryBreak!.hours}}:0{{timeSummaryBreak!.minutes}}:0{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds >= 10 && timeSummaryBreak!.minutes < 10 &&  timeSummaryBreak!.hours < 10">
+
+            0{{timeSummaryBreak!.hours}}:0{{timeSummaryBreak!.minutes}}:{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds < 10 && timeSummaryBreak!.minutes >= 10 &&  timeSummaryBreak!.hours < 10">
+
+            0{{timeSummaryBreak!.hours}}:{{timeSummaryBreak!.minutes}}:0{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds >= 10 && timeSummaryBreak!.minutes >= 10 &&  timeSummaryBreak!.hours < 10">
+
+            0{{timeSummaryBreak!.hours}}:{{timeSummaryBreak!.minutes}}:{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds < 10 && timeSummaryBreak!.minutes < 10 &&  timeSummaryBreak!.hours >= 10">
+
+            {{timeSummaryBreak!.hours}}:0{{timeSummaryBreak!.minutes}}:0{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds < 10 && timeSummaryBreak!.minutes >= 10 &&  timeSummaryBreak!.hours >= 10">
+
+            {{timeSummaryBreak!.hours}}:{{timeSummaryBreak!.minutes}}:0{{timeSummaryBreak!.seconds}}
+          </span>
+
+          <span class="timeS"
+            *ngIf="timeSummaryBreak!.seconds >= 10 && timeSummaryBreak!.minutes >= 10 &&  timeSummaryBreak!.hours >= 10">
+
+            {{timeSummaryBreak!.hours}}:{{timeSummaryBreak!.minutes}}:{{timeSummaryBreak!.seconds}}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

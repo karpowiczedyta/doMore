@@ -1,0 +1,418 @@
+
+.main-nav{
+  position: fixed;
+  background-color: #212529 ;
+  padding: 10px;
+  height: 30px;
+  width: 234px;
+  top:0;
+  left: 0;
+  z-index: 0;
+}
+
+.main-nav-name h3{
+  margin: 0;
+  margin-left: 0;
+  width: 200px;
+  line-height: 34px;
+  text-decoration: none;
+  padding-left: 25px;
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+.main-nav-sidebar{
+  padding-top: 30px;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  z-index: 0;
+}
+
+.main-nav-sidebar a{
+  display: block;
+  width: 100%;
+  line-height: 45px;
+  text-decoration: none;
+  padding-left: 25px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  color: #444444;
+}
+
+.main-nav-sidebar a:hover {
+  background: #CCCCCC;
+  color: black;
+  font-weight: 600;
+}
+
+.main-nav-sidebar i {
+  padding-right: 10px;
+}
+
+.h4-main-nav{
+  position: fixed;
+  bottom: 156px;
+  padding-left: 30px;
+  background-color: #212529;
+  color:#fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  width: 225px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 0;
+}
+
+.main-nav-account{
+  display: block;
+  width: 255px;
+  position: fixed;
+  bottom: 66px;
+}
+
+.main-nav-sidebar {
+  width: 255px;
+  top: 2px;
+  bottom: 0;
+  left: 0;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.main-nav-account a{
+  padding-right: 5px;
+  padding-left: 20px;
+
+}
+
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  width: 81.32%;
+  margin-left: 254px;
+  min-height: 100vh;
+}
+
+.header{
+  color: red;
+  padding: 10px;
+  border-left: 3px rgb(197, 193, 193) groove;
+  border-bottom: 3px rgb(197, 193, 193) groove;
+  width: 70%;
+  margin: auto;
+  font-weight: 900;
+  position: absolute;
+  top: 0px;
+  left: 18.73%;
+  height: 8vh;
+}
+
+header i {
+  float: left;
+  font-size: 33px;
+  margin-right: 18px;
+  margin-left: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+header h1 {
+line-height: 65px;
+font-family: 'Roboto', sans-serif;
+font-size: 33px;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-weight: bold;
+cursor: pointer;
+}
+
+header h1:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+  cursor: pointer;
+}
+
+.input-group{
+  float: left;
+  margin-top: 0px;
+  margin-left: 32px;
+}
+
+.input-group h4 {
+  font-size: 13px;
+margin-left: 22px;
+margin-bottom: 6px;
+font-family: "Josefin Sans", sans-serif;
+letter-spacing: 1px;
+}
+
+.input-group i {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+select {
+  width: 200px;
+  padding: 5px 5px 5px 15px;
+  outline: none;
+  border: inset;
+  background-color: rgba(252, 249, 249, 0.9);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 13px;
+  color: black;
+  margin-right: 10px;
+}
+.choice {
+  margin-top:120px;
+  margin-bottom: 20px;
+}
+
+   .add{
+    margin-top: 25px;
+    margin-right: 60px;
+    float: right;
+    width: 60px;
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 40px ;
+    box-shadow: 0 7px 30px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+    .add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0, 0.2)
+  }
+
+     .add:active {
+    transform: translateY(0);
+  }
+
+  .add i {
+    font-size: 25px;
+    color:red;
+  }
+
+  .removeAll{
+    margin-top: 25px;
+    float: right;
+    margin-right: 30px;
+    float: right;
+    width: 60px;
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 20px ;
+    box-shadow: 0 7px 30px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .removeAll i {
+    font-size: 25px;
+    color:red;
+  }
+
+  .removeAll:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0, 0.2)
+  }
+
+     .removeAll:active {
+    transform: translateY(0);
+  }
+
+  .break {
+    position: absolute;
+    left: 63%;
+    top:29%
+  }
+
+  .break p{
+    font-size: 18px;
+    margin-bottom: 6px;
+    margin-left: 10px;
+    font-family: "Josefin Sans", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .break p i{
+    margin-right: 4px ;
+  }
+
+  .tg i {
+    font-size: 48px;
+  }
+
+.grid-table
+{
+	display:table;
+  margin-bottom: 0px;
+}
+
+.thead
+{
+	display:table-header-group;
+	font-weight:bold;
+	border-bottom: 1px solid black;
+  text-align: center;
+  background-color: yellow;
+  margin-bottom: 0px;
+}
+
+.tbody
+{
+	display:table-row-group;
+}
+.tr
+{
+	display:table-row;
+
+}
+
+.td
+{
+	display:table-cell;
+	padding: 10px 25px 10px 25px;
+  border: 2px solid black;
+
+}
+
+.td0
+{
+	display:table-cell;
+  border: 2px solid black;
+
+}
+.thead div.tr div.td:nth-child(1){
+  padding: 10px 10px 10px 10px;
+}
+.thead div.tr div.td:nth-child(2){
+  padding: 10px 35px 10px 35px;
+}
+.thead div.tr div.td:nth-child(3){
+  padding: 10px 10px 10px 10px;
+}
+.thead div.tr div.td:nth-child(4){
+  padding: 10px 50px 10px 50px;
+}
+
+.thead div.tr div.td:nth-child(5){
+  padding: 10px 30px 10px 30px;
+}
+.thead div.tr div.td:nth-child(6){
+  padding: 10px 8px 10px 8px;
+}
+.thead div.tr div.td:nth-child(7){
+  padding: 10px 8px 10px 8px;
+}
+.thead div.tr div.td:nth-child(8){
+  padding: 10px 24px 10px 24px;
+}
+.thead div.tr div.td:nth-child(9){
+  padding: 10px 82px 10px 83px;
+}
+
+.eStageRow{
+  padding: 7px 0px 7px 0px;
+  max-width: 127.5px;
+  min-width: 128.5px;
+
+}
+
+.className{
+  padding: 7px 0px 7px 0px;
+  max-width: 161.5px;
+  min-width: 161.5px;
+
+}
+
+.year{
+  padding: 7px 0px 7px 0px;
+  max-width: 52.4px;
+  min-width: 52.4px;
+}
+
+.subject{
+  padding: 7px 0px 7px 0px;
+  max-width: 151.7px;
+  min-width: 151.7px;
+}
+
+.date{
+  padding: 7px 0px 7px 0px;
+  max-width: 92px;
+  min-width: 92px;
+}
+
+.startTime{
+  padding: 7px 0px 7px 0px;
+  max-width: 83px;
+  min-width: 83px;
+}
+
+.endTime{
+  padding: 7px 0px 7px 0px;
+  max-width: 77.3px;
+  min-width: 77.3px;
+}
+
+.time{
+  padding: 7px 0px 7px 0px;
+  max-width: 83.8px;
+  min-width: 83.8px;
+}
+.operation{
+
+  padding: 7px 0px 7px 0px;
+  max-width: 235px;
+  min-width: 235px;
+}
+
+button{
+  margin:auto 10px auto 10px;
+}
+
+button i {
+  font-size: 20px;
+  color: black;
+  background-color: rgba(252, 249, 249, 0.9);
+  cursor: pointer;
+}
+
+.timer-div{
+  width: 300px;
+  height: 55px;
+  position: absolute;
+  top:32.5%;
+  left:37%;
+  border: 3px black solid;
+}
+
+cd-timer{
+  font-size: 50px;
+  margin-left:20px;
+  position: absolute;
+  left: 39px;
+}
+
+.timep{
+  font-size: 50px;
+  margin-left:20px;
+  position: absolute;
+  left: 39px;
+}
+
+

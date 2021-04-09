@@ -1,0 +1,239 @@
+body {
+  font-size: .875rem;
+  margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-nav{
+  position: fixed;
+  background-color: #212529 ;
+  padding: 10px;
+  height: 30px;
+  width: 234px;
+  top:0;
+  left: 0;
+  z-index: 0;
+}
+
+.main-nav-name h3{
+  margin: 0;
+  margin-left: 0;
+  width: 200px;
+  line-height: 34px;
+  text-decoration: none;
+  padding-left: 25px;
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+.main-nav-sidebar{
+  padding-top: 30px;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  z-index: 0;
+}
+
+.main-nav-sidebar a{
+  display: block;
+  width: 100%;
+  line-height: 45px;
+  text-decoration: none;
+  padding-left: 25px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  color: #444444;
+}
+
+.main-nav-sidebar a:hover {
+  background: #CCCCCC;
+  color: black;
+  font-weight: 600;
+}
+
+.main-nav-sidebar i {
+  padding-right: 10px;
+}
+
+.h4-main-nav{
+  position: fixed;
+  bottom: 156px;
+  padding-left: 30px;
+  background-color: #212529;
+  color:#fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  width: 225px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 0;
+}
+
+.main-nav-account{
+  display: block;
+  width: 255px;
+  position: fixed;
+  bottom: 66px;
+}
+
+.main-nav-sidebar {
+  width: 255px;
+  top: 2px;
+  bottom: 0;
+  left: 0;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.main-nav-account a{
+  padding-right: 5px;
+  padding-left: 20px;
+
+}
+
+.containerr {
+  width: 81.5%;
+  margin-left: 254px;
+  height: 100vh;
+  background: #50a3a2;
+  background: linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+}
+
+.containerr h1 {
+  margin-top: 4%;
+  margin-left: 74px;
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+
+ .reg{
+  cursor: pointer !important ;
+  }
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+}
+body ::-webkit-input-placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+}
+body :-moz-placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+body ::-moz-placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+body :-ms-input-placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: 300;
+}
+
+
+.wrapper {
+  background: #50a3a2;
+  background: linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  position: absolute;
+  top: 22%;
+  left: 35.5%;
+  width: 50.5%;
+  height: 370px;
+  border: black 5px solid;
+  overflow: hidden;
+
+}
+.wrapper.form-success .container h1 {
+          transform: translateY(85px);
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  }
+
+input {
+appearance: none;
+outline: 0;
+border: 1px solid rgba(255, 255, 255, 0.4);
+background-color: rgba(255, 255, 255, 0.2);
+width: 260px;
+border-radius: 3px;
+padding: 8px 15px;
+margin: 0 auto 27px 20px;
+text-align: center;
+font-size: 15px;
+color: white;
+-webkit-transition-duration: 0.25s;
+transition-duration: 0.25s;
+font-weight: 300;
+}
+
+ input:hover {
+background-color: rgba(255, 255, 255, 0.4);
+}
+
+ input:focus {
+background-color: white;
+width: 300px;
+color: #53e3a6;
+}
+
+.input-group span {
+ font-size: 20px;
+ letter-spacing: 2px;
+}
+
+.input-groups{
+
+  margin: 40px auto 0 100px;
+}
+
+.firstname{
+ margin-left: 30px;
+}
+
+.lastname{
+  margin-left: 34px;
+}
+
+.username{
+  margin-left: 37px;
+}
+
+.changePassword{
+  text-decoration: none;
+  appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 8px 59.7px;
+  color: black;
+  letter-spacing: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  margin-left: 8.8%;
+}
+

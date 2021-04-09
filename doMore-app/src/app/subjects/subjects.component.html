@@ -1,0 +1,82 @@
+<header>
+  <div class="name">
+    <h3> do-more </h3>
+  </div>
+</header>
+<nav>
+  <div class="sidebar">
+    <a href="/addEducationStage"><i class="fas fa-user-plus"></i><span>Add new education stage</span></a><h4></h4>
+    <a href="/addSubjects"><i class="fas fa-user-plus"></i><span>Add new subject</span></a> <h4></h4>
+    <a href="/startLearning"><i class="fas fa-hourglass "></i><span>Start learning for today</span></a><h4></h4>
+    <a href="/reviewRecords"><i class="fas fa-tasks"></i><span>An overwiev of your progress </span></a><h4></h4>
+    <a href="/charts"><i class="far fa-chart-bar"></i><span>Charts</span></a><h4></h4>
+    <a href="/pieChart"><i class="fas fa-chart-pie"></i><span>Pie chart</span></a><h4></h4>
+    <a routerLink="/notes"><i class="fas fa-sticky-note"></i><span>Make notes</span></a><h4></h4>
+    <a href="/editions"><i class="fas fa-edit"></i><span>Editions </span></a><h4></h4>
+    <h4>
+      <span>Account</span>
+    </h4>
+    <div class="account">
+      <a href="/settings"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+      <a (click) = "logout()" ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="header">
+    <h1>Add Subject</h1>
+  </div>
+
+
+  <div class=" form-container modal">
+    <div class="form-containerIn">
+      <div class="select">
+        <div class="input-group">
+          <h2>Choose your education stage: </h2>
+          <i class="fas fa-user-graduate"></i>
+          <select [(ngModel)]="selectedEducationStage" (click)=getEducationStage()>
+            <option (change)=getEducationStage() *ngFor="let educationStageDistinct of alleducationStagesDistinct"
+              [ngValue]="educationStageDistinct">{{ educationStageDistinct }}</option>
+          </select>
+          <div *ngIf="" class="invalid-input">
+            <h2 *ngIf="">Education stage is required</h2>
+          </div>
+        </div>
+        <div class="input-group">
+          <h2>Choose your name of class: </h2>
+          <i class="fas fa-book-reader"></i>
+          <select [(ngModel)]="selectedName" (click)=getName()>
+            <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+          </select>
+          <div *ngIf="" class="invalid-input">
+            <h2 *ngIf="">Name is required</h2>
+          </div>
+        </div>
+        <div class="input-group">
+          <h2>Choose your year: </h2>
+          <i class="fas fa-calendar-alt"></i>
+          <select [(ngModel)]="selectedYear" (click)=getYear()>
+            <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+          </select>
+          <div *ngIf="" class="invalid-input">
+            <h2 *ngIf="">Name is required</h2>
+          </div>
+        </div>
+
+      </div>
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addSubject()" novalidate class="form">
+        <div class="input-group">
+          <h2>Subject: </h2>
+          <input type="text" name="subject" placeholder="Subject" [(ngModel)]="newSubject" #subject="ngModel"
+            [ngClass]="{ 'is-invalid ': f.submitted && subject.invalid }" required />
+          <div *ngIf="f.submitted && subject.invalid" class="invalid-input">
+            <h2 *ngIf="subject.errors?.required">Subject is required</h2>
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>

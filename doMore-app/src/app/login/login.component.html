@@ -1,0 +1,40 @@
+<div class="containerr">
+ <div class="wrapper">
+	<div class="container">
+    <small class="text-danger">{{msg}}</small>
+		<h1>Welcome </h1>
+		<form class="form" #loginform="ngForm" (ngSubmit)="loginUser()">
+      <input type="email"
+      name="email"
+      placeholder="Username"
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      [ngClass]="{ 'is-invalid': loginform.submitted && email.invalid && email.touched}"
+      id="form2Example1" class="form-control"
+      required />
+      <input type="password"
+      name="password"
+      placeholder="Password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      [ngClass]="{ 'is-invalid': loginform.submitted && password.invalid }"
+      id="form2Example2" class="form-control"
+      required />
+			<button type="submit" id="login-button">Login</button>
+      <p class="reg-p">Not a member? <a class="reg" href="/registration" >Register</a></p>
+		</form>
+	</div>
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+</div>

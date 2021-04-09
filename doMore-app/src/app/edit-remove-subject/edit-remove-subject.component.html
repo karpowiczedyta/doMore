@@ -1,0 +1,102 @@
+<header class= "main-nav">
+  <div class="main-nav-name">
+    <h3> do-more </h3>
+  </div>
+</header>
+<nav>
+  <div class="main-nav-sidebar">
+    <a href="/addEducationStage"><i class="fas fa-user-plus"></i><span>Add new education stage</span></a><h4></h4>
+    <a href="/addSubjects"><i class="fas fa-user-plus"></i><span>Add new subject</span></a> <h4></h4>
+    <a href="/startLearning"><i class="fas fa-hourglass "></i><span>Start learning for today</span></a><h4></h4>
+    <a href="/reviewRecords"><i class="fas fa-tasks"></i><span>An overwiev of your progress </span></a><h4></h4>
+    <a href="/charts"><i class="far fa-chart-bar"></i><span>Charts</span></a><h4></h4>
+    <a href="/pieChart"><i class="fas fa-chart-pie"></i><span>Pie chart</span></a><h4></h4>
+    <a routerLink="/notes"><i class="fas fa-sticky-note"></i><span>Make notes</span></a><h4></h4>
+    <a href="/editions"><i class="fas fa-edit"></i><span>Editions </span></a><h4></h4>
+    <h4 class="h4-main-nav">
+      <span>Account</span>
+    </h4>
+    <div class="main-nav-account">
+      <a href="/settings"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+      <a (click) = "logout()" ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="container ">
+  <nav class="clearfix nav-editions">
+    <div class="navbar-brand clearfix" href="#">
+      <i class="fas fa-edit"></i>
+      <span class="text"> Editions </span>
+    </div>
+    <div class="navbar-links">
+      <ul class="navbar-ul clearfix">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/modifyEducationStage"> Education stages </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/modifySubject"> Subjects </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main class="data clearfix">
+    <div class="header">
+      <i class="fas fa-user-graduate"></i>
+      Subjects
+    </div>
+
+    <div class="select clearfix">
+      <div class="input-group">
+        <h4>Choose your education stage: </h4>
+        <i class="fas fa-user-graduate"></i>
+        <select [(ngModel)]="selectedEducationStage" (click)=getEducationStage()>
+          <option (change)=getEducationStage() *ngFor="let educationStageDistinct of alleducationStagesDistinct"
+            [ngValue]="educationStageDistinct">{{ educationStageDistinct }}</option>
+        </select>
+        <div *ngIf="" class="invalid-input">
+          <h2 *ngIf="">Education stage is required</h2>
+        </div>
+      </div>
+      <div class="input-group">
+        <h4>Choose your name of class: </h4>
+        <i class="fas fa-book-reader"></i>
+        <select [(ngModel)]="selectedName" (click)=getName()>
+          <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+        </select>
+        <div *ngIf="" class="invalid-input">
+          <h2 *ngIf="">Name is required</h2>
+        </div>
+      </div>
+      <div class="input-group">
+        <h4>Choose your year: </h4>
+        <i class="fas fa-calendar-alt"></i>
+        <select [(ngModel)]="selectedYear" (click)=getYear()>
+          <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+        </select>
+        <div *ngIf="" class="invalid-input">
+          <h2 *ngIf="">Name is required</h2>
+        </div>
+      </div>
+    </div>
+
+    <button (click)=getSubjectsByEducationStage() type="button">search</button>
+
+    <h4 class="subject">Subjects:</h4>
+    <div class="subjects clearfix">
+      <a class="clearfix" *ngFor="let subject of subjects">
+        <span class="iconS">
+          <i class="fas fa-bookmark"></i>&nbsp;
+        </span>
+        <input [(ngModel)]="subject.subjectName" (change)="updateSubject(subject)" type="text" style="width: 72%" />
+        <span class="trash">
+          <a (click)="deleteSubject(subject)">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </span>
+        <hr align="left">
+      </a>
+    </div>
+
+  </main>
+</div>

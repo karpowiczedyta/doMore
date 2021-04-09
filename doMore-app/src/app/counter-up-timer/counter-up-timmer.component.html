@@ -1,0 +1,202 @@
+<header class= "main-nav">
+  <div class="main-nav-name">
+    <h3> do-more </h3>
+  </div>
+</header>
+<nav>
+  <div class="main-nav-sidebar">
+    <a href="/addEducationStage"><i class="fas fa-user-plus"></i><span>Add new education stage</span></a><h4></h4>
+    <a href="/addSubjects"><i class="fas fa-user-plus"></i><span>Add new subject</span></a> <h4></h4>
+    <a href="/startLearning"><i class="fas fa-hourglass "></i><span>Start learning for today</span></a><h4></h4>
+    <a href="/reviewRecords"><i class="fas fa-tasks"></i><span>An overwiev of your progress </span></a><h4></h4>
+    <a href="/charts"><i class="far fa-chart-bar"></i><span>Charts</span></a><h4></h4>
+    <a href="/pieChart"><i class="fas fa-chart-pie"></i><span>Pie chart</span></a><h4></h4>
+    <a routerLink="/notes"><i class="fas fa-sticky-note"></i><span>Make notes</span></a><h4></h4>
+    <a href="/editions"><i class="fas fa-edit"></i><span>Editions </span></a><h4></h4>
+    <h4 class="h4-main-nav">
+      <span>Account</span>
+    </h4>
+    <div class="main-nav-account">
+      <a href="/settings"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+      <a (click) = "logout()" ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <header class="header clearfix">
+    <i class="fas fa-hourglass"></i>
+    <h1>Your counter-up timer</h1>
+  </header>
+
+  <div class="choice clearfix">
+    <div class="input-group">
+      <h4>Choose your education stage: </h4>
+      <i class="fas fa-user-graduate"></i>
+      <select [(ngModel)]="selectedEducationStage" (click)=getEducationStage()>
+        <option *ngFor="let educationStageDistinct of alleducationStagesDistinct" [ngValue]="educationStageDistinct">{{
+          educationStageDistinct }}</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <h4>Choose your name of class: </h4>
+      <i class="fas fa-book-reader"></i>
+      <select [(ngModel)]="selectedName" (click)=getName()>
+        <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <h4>Choose your year: </h4>
+      <i class="fas fa-calendar-alt"></i>
+      <select [(ngModel)]="selectedYear" (click)=getYear()>
+        <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <h4>Choose your subject: </h4>
+      <i class="fas fa-calendar-alt"></i>
+      <select [(ngModel)]="selectedSubject" (click)=checkItOut()>
+        <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject}}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="clearfix">
+    <div class="timer-div">
+      <p *ngIf="seconds===0 && minutes===0 && hours===0" class="timep">00:00:00</p>
+      <cd-timer [autoStart]=false #basicTimer format="hms"></cd-timer>
+    </div>
+    <button [disabled]="isDisableAdd" (click)="addRecord()" class="add ">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button *ngIf="counterUpTimerArray.length > 0 " class="removeAll" (click)="removeAll()"><i
+        class="fas fa-trash"></i></button><br>
+
+    <div class="break">
+      <div class="break-hr">
+        <p><i class="fas fa-stopwatch"></i>Your break</p>
+      </div>
+      <button [disabled]="isDisabledPlayBreak" (click)=startBreak() class="play tg"><i
+          class="fas fa-play-circle"></i></button>
+      <button [disabled]="isDisabledStopBreak" (click)=stopBreak() class="stop tg"><i
+          class="fas fa-stop-circle"></i></button>
+    </div>
+  </div>
+
+  <div class="grid-table">
+    <div class="thead">
+      <div class="tr">
+        <div class="td">Education Stage</div>
+        <div class="td">Name of class</div>
+        <div class="td">Year</div>
+        <div class="td">Subject</div>
+        <div class="td">Date</div>
+        <div class="td">Start time</div>
+        <div class="td">End time</div>
+        <div class="td">Time</div>
+        <div class="td">Operation</div>
+      </div>
+    </div>
+  </div>
+  <div class="grid-table">
+    <div class="thead newC">
+
+      <a class="tr" *ngFor="let counterUpTimer of counterUpTimerArray ; let i = index">
+        <div class="td0">
+          <div class="eStageRow">{{counterUpTimer.educationStage}}</div>
+        </div>
+
+        <div class="td0">
+          <div class="className">{{counterUpTimer.name}}</div>
+        </div>
+
+        <div class="td0">
+          <div class="year"> {{counterUpTimer.actualYear}}</div>
+        </div>
+
+        <div class="td0">
+          <div class="subject"> {{counterUpTimer.subject}}</div>
+
+        </div>
+
+
+        <div class="td0">
+          <div class="date">{{counterUpTimer.date | date:'dd-MM-yyyy' }}</div>
+        </div>
+
+        <div class="td0">
+          <div class="startTime"> {{counterUpTimer.startTime | date: 'hh:mm' }}</div>
+
+        </div>
+
+        <div class="td0">
+          <div class="endTime"> {{counterUpTimer.endTime | date: 'hh:mm'}}</div>
+        </div>
+
+        <div class="td0">
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours < 10">
+
+            0{{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours < 10">
+
+            0{{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours < 10">
+
+            0{{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours < 10">
+
+            0{{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes < 10 &&  counterUpTimer.hours >= 10">
+
+            {{counterUpTimer.hours}}:0{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds < 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours >= 10">
+
+            {{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:0{{counterUpTimer.seconds}}
+          </div>
+
+          <div class="time"
+            *ngIf="counterUpTimer.seconds >= 10 && counterUpTimer.minutes >= 10 &&  counterUpTimer.hours >= 10">
+
+            {{counterUpTimer.hours}}:{{counterUpTimer.minutes}}:{{counterUpTimer.seconds}}
+          </div>
+        </div>
+
+        <div class="td0">
+          <div class="operation">
+            <button *ngIf=" truee(i) === true" [disabled]="isDisabledCounterUp" (click)="start(counterUpTimer)"><i
+                class="fas fa-play-circle"></i></button>
+            <button [disabled]="isDisabledCounterUp" (click)="stop(counterUpTimer)"><i
+                class="fas fa-stop-circle"></i></button>
+            <button [disabled]="isDisabledCounterUp" (click)="resume(counterUpTimer)"><i
+                class="fas fa-pause-circle"></i></button>
+            <button [disabled]="isDisabledBreak" (click)="delete(counterUpTimer)"><i class="fas fa-trash"></i></button>
+            <button [disabled]="isDisabledBreak" (click)="post(counterUpTimer)"><i class="fas fa-plus"></i></button><br>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<simple-notifications></simple-notifications>

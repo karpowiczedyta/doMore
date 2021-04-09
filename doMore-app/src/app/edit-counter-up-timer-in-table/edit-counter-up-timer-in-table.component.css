@@ -1,0 +1,133 @@
+.container {
+  position: fixed;
+  width: 100%;
+  margin-left: 254px;
+  height: 100vh;
+  background-color: rgba(7, 1, 1, 0.596);
+  z-index: 1;
+  left: 0%;
+  top: 0%;
+}
+
+.main{
+  position: fixed;
+  width: 35%;
+  margin-left: 254px;
+  height: 50vh;
+  background-color: rgba(112, 112, 167, 0.945);
+  background: linear-gradient(rgba(65, 61, 77, 0.863),
+  rgba(2, 1, 1, 0.9));
+  left: 20%;
+  top: 28%;
+  border-radius: 20px;
+  border:2px black solid;
+  color: #fff;
+  z-index: 2;
+}
+
+.header{
+  font-size: 20px;
+  padding:10px 0 3px 79px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.choice {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group{
+  margin-top: 0px;
+  margin-left: 70px;
+}
+
+.input-group h4 {
+  font-size: 12px;
+margin-left: 30px;
+margin-top: 9px;
+margin-bottom: 4px;
+font-family: "Josefin Sans", sans-serif;
+letter-spacing: 2px;
+}
+
+.input-group i {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+select {
+  width:295px;
+  padding: 5px 5px 5px 30px;
+  outline: none;
+  border: inset;
+  background-color: rgba(252, 249, 249, 0.9);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 13px;
+  color: black;
+  margin-right: 10px;
+  margin-left: 0px;
+  font-weight: 500;
+}
+
+.close{
+  width: 40px;
+  position: absolute;
+  left: 86%;
+  font-size: 30px;
+  background: transparent;
+  border: transparent;
+}
+
+.close i{
+  font-size: 35px;
+  color: rgba(122, 121, 128, 0.863)
+}
+
+.update{
+  position: absolute;
+  top:79.5%;
+  left: 15%;
+  width:297px;
+  padding: 6px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background: linear-gradient(rgba(52, 49, 61, 0.863),
+  rgba(2, 1, 1, 0.9));
+  background: linear-gradient(rgba(132, 129, 143, 0.863),
+  rgba(129, 124, 124, 0.9));
+  color:#fff;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin: 20px ;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.update:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0, 0.2)
+}
+
+ .update:active {
+  transform: translateY(0);
+}
+
+.choice .is-invalid{
+  border-width:3px;
+  border-style:inset;
+  border-color: red;
+}
+
+.input-group-ch .is-invalid{
+  border-width:3px;
+  border-style:inset;
+  border-color: red;
+}
+
+
+
+

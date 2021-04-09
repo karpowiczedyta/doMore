@@ -1,0 +1,117 @@
+<header class= "main-nav">
+  <div class="main-nav-name">
+    <h3> do-more </h3>
+  </div>
+</header>
+<nav>
+  <div class="main-nav-sidebar">
+    <a href="/addEducationStage"><i class="fas fa-user-plus"></i><span>Add new education stage</span></a><h4></h4>
+    <a href="/addSubjects"><i class="fas fa-user-plus"></i><span>Add new subject</span></a> <h4></h4>
+    <a href="/startLearning"><i class="fas fa-hourglass "></i><span>Start learning for today</span></a><h4></h4>
+    <a href="/reviewRecords"><i class="fas fa-tasks"></i><span>An overwiev of your progress </span></a><h4></h4>
+    <a href="/charts"><i class="far fa-chart-bar"></i><span>Charts</span></a><h4></h4>
+    <a href="/pieChart"><i class="fas fa-chart-pie"></i><span>Pie chart</span></a><h4></h4>
+    <a routerLink="/notes"><i class="fas fa-sticky-note"></i><span>Make notes</span></a><h4></h4>
+    <a href="/editions"><i class="fas fa-edit"></i><span>Editions </span></a><h4></h4>
+    <h4 class="h4-main-nav">
+      <span>Account</span>
+    </h4>
+    <div class="main-nav-account">
+      <a href="/settings"><i class="fas fa-user-cog"></i><span>Settings</span></a>
+      <a (click) = "logout()" ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <nav class="header">
+    <div class="progress">
+      <i class="fas fa-spinner"></i>
+      <span class="text"> Charts </span>
+    </div>
+    <div class="navbar-links">
+      <ul class="navbar-ul">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/charts"> Time </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/chartsForSubject"> Time per subject </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/chartsForBreak"> Time per break </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main">
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid " novalidate>
+      <div class="choice clearfix">
+        <div class="input-group">
+          <h4>Choose your education stage: </h4>
+          <i class="fas fa-user-graduate"></i>
+          <select [(ngModel)]="selectedEducationStage" (click)=" getEducationStage()" name="eStage" #estage="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && estage.invalid}" required>
+            <option *ngFor="let educationStageDistinct of alleducationStagesDistinct"
+              [ngValue]="educationStageDistinct">{{ educationStageDistinct }}</option>
+          </select>
+          <div *ngIf="f.submitted && estage.invalid " class="invalid-input">
+            <h2 *ngIf="estage.errors?.required">Education Stage is required</h2>
+          </div>
+        </div>
+        <div class="input-group">
+          <h4>Choose your name of class: </h4>
+          <i class="fas fa-book-reader"></i>
+          <select [(ngModel)]="selectedName" (click)=" getName() " name="className" #className="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && className.invalid}" required>
+            <option *ngFor="let nameDistinct of allNameDistinct" [ngValue]="nameDistinct">{{ nameDistinct}}</option>
+          </select>
+          <div *ngIf="f.submitted && className.invalid " class="invalid-input">
+            <h2 *ngIf="className.errors?.required">Class name is required</h2>
+          </div>
+        </div>
+        <div class="input-group">
+          <h4>Choose your year: </h4>
+          <i class="fas fa-calendar-alt"></i>
+          <select [(ngModel)]="selectedYear" (click)=" getYear() " name="yearOfStudy" #yearOfStudy="ngModel"
+            [ngClass]="{'is-invalid': f.submitted && yearOfStudy.invalid}" required>
+            <option *ngFor="let yearDistinct of allYearDistinct" [ngValue]="yearDistinct">{{ yearDistinct}}</option>
+          </select>
+          <div *ngIf="f.submitted && yearOfStudy.invalid" class="invalid-input">
+            <h2 *ngIf="yearOfStudy.errors?.required">Year is required</h2>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="buttons">
+    <button class="summary" [disabled]="isDisalbed" mat-raised-button (click)="pickerD.open()"> <i
+        class="fas fa-calendar-alt"></i>Day</button>
+    <input class="hideD" matInput [matDatepicker]="pickerD" [(ngModel)]="date" (ngModelChange)="summaryByDay()">
+    <mat-datepicker #pickerD></mat-datepicker>
+    <button class="summary" [disabled]="isDisalbed" mat-raised-button (click)="pickerW.open()"> <i
+        class="fas fa-calendar-alt"></i>Week</button>
+    <input class="hideW" matInput [matDatepicker]="pickerW" [(ngModel)]="date" (ngModelChange)="summaryByWeek()">
+    <mat-datepicker #pickerW></mat-datepicker>
+    <button class="summary" [disabled]="isDisalbed" mat-raised-button (click)="pickerM.open()"><i
+        class="fas fa-calendar-alt"></i>Month</button>
+    <input class="hideM" matInput [matDatepicker]="pickerM" [(ngModel)]="date" (ngModelChange)="summaryByMonth()">
+    <mat-datepicker #pickerM></mat-datepicker>
+    <button class="summary" [disabled]="isDisalbed" mat-raised-button (click)="pickerY.open()"><i
+        class="fas fa-calendar-alt"></i>Year</button>
+    <input class="hideY" matInput [matDatepicker]="pickerY" [(ngModel)]="date" (ngModelChange)="summaryByYear()">
+    <mat-datepicker #pickerY></mat-datepicker>
+    <button class="summaryP" [disabled]="false" (click)="previousDate()"><i class="fas fa-arrow-alt-circle-left"></i>
+      Previous</button>
+    <button class="summaryN" [disabled]="false" (click)="forwardDate()">Next<i
+        class="fas fa-arrow-alt-circle-right"></i></button>
+  </div>
+  <a href="#" class="export" (click)="downloadCanvas($event)"><i class="fas fa-download"></i> Export</a>
+  <div>
+    <div class="chart" style="display: block;">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+    </div>
+  </div>
+</div>
